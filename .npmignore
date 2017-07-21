@@ -1,0 +1,12 @@
+.DS_Store
+.git
+npm-debug.log
+src
+demo
+coverage
+.travis.yml
+CONTRIBUTING.md
+jest.transform.js
+nwb.config.js
+.gitignore
+tests

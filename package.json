@@ -1,0 +1,62 @@
+{
+  "name": "formsy-react-form-inputs",
+  "version": "1.0.0",
+  "description": "Form inputs to work with formsy react",
+  "main": "lib/index.js",
+  "module": "es/index.js",
+  "files": [
+    "css",
+    "es",
+    "lib",
+    "umd"
+  ],
+  "scripts": {
+    "build-css": "node-sass-chokidar src/styles/scss/ -o src/styles/",
+    "watch-css": "npm run build-css && node-sass-chokidar src/styles/scss/ -o src/styles/ --watch --recursive",
+    "build:package-css": "node-sass-chokidar src/styles/scss/ -o lib/styles/",
+    "build:package-js": "nwb build-react-component",
+    "build": "npm-run-all -p build:package-css build:package-js",
+    "clean": "nwb clean-module && nwb clean-demo",
+    "start:demo": "nwb serve-react-demo",
+    "start": "npm-run-all -p watch-css start:demo",
+    "test": "jest",
+    "test:watch": "npm test -- --watch",
+    "test:coverage": "npm test -- --coverage",
+    "test:coverageWatch": "npm test -- --coverage --watch",
+    "deploy": "npm run build && git push origin :gh-pages && git subtree push --prefix demo/dist origin gh-pages"
+  },
+  "peerDependencies": {
+    "react": "15.x",
+    "formsy-react": "^0.19.5"
+  },
+  "devDependencies": {
+    "jest": "^20.0.4",
+    "node-sass-chokidar": "0.0.3",
+    "npm-run-all": "^4.0.2",
+    "nwb": "0.18.x",
+    "react": "^15.6.1",
+    "react-dom": "^15.6.1"
+  },
+  "keywords": [],
+  "repository": {},
+  "bugs": {},
+  "author": "Raffaele Rizzett <hello@raffr.co.uk>",
+  "license": "ISC",
+  "jest": {
+    "transform": {
+      "^.+\\.js$": "<rootDir>/jest.transform.js"
+    },
+    "collectCoverageFrom": [
+      "src/**/*.js"
+    ],
+    "modulePathIgnorePatterns": [
+      "<rootDir>[/\\\\](build|demo|node_modules|lib|es)[/\\\\]"
+    ]
+  },
+  "dependencies": {
+    "classnames": "^2.2.5",
+    "lodash": "^4.17.4",
+    "prop-types": "^15.5.10",
+    "react-proptype-conditional-require": "^1.0.4"
+  }
+}
